@@ -13,6 +13,10 @@ public class ListTest {
     return new ArrayList<E>(Arrays.asList(array));
   }
   
+  // the List Model:
+  // The Java List contains a collection of elements ordered
+  // by index, beginning at zero. The elements of a list
+  // must be of the type determined when the list is created.
 
   // the length() method:
 
@@ -224,5 +228,109 @@ public class ListTest {
       assertFalse(l.contains('a'));
       assertFalse(l.contains(""));
     }
+
+
+    // the indexOf(Object obj) Method
+
+    // Specification
+    // Returns the index of the first occurrence of the element in the list
+    // if the element is not in the list, -1 is returned.
+
+  // test 1: make list, make sure it gets every index right
+  @Test
+  public void testIndexOf1(){
+    Integer[] ar = {1, 2, 3, 4, 5};
+    List<Integer> l = makeList(ar);
+    assertEquals(0, l.indexOf(1));
+    assertEquals(1, l.indexOf(2));
+    assertEquals(2, l.indexOf(3));
+    assertEquals(3, l.indexOf(4));
+    assertEquals(4, l.indexOf(5));
+  }
+
+  //test 2: make list, make sure it correctly returns -1 if elements dont exist
+  @Test
+  public void testIndexOf2(){
+    Integer[] ar = {1, 2, 3, 4, 5};
+    List<Integer> l = makeList(ar);
+    assertEquals(-1, l.indexOf(7));
+    assertEquals(-1, l.indexOf("nope"));
+  }
+  // I was trying to make a multi-dimensional list index test but it wasn't
+  // working because makeList got confused.
+//  public void testIndexOf3(){
+//    Integer[][] ar = {{1, 2}, {2, 3}, {3, 4}};
+//    List<List<Integer>> l = makeList(ar);
+//    assertEquals(-1, 7);
+//    assertEquals(-1, "nope");
+//  }
+
+  //Test 3: Make List of strings and see if it works
+  @Test
+  public void testIndexOf3(){
+    String[] ar = {"hello", "world", "foo", "bar"};
+    List<String> l = makeList(ar);
+    assertEquals(-1, l.indexOf(7));
+    assertEquals(1, l.indexOf("world"));
+  }
+
+  // The subList(int fromIndex, int toIndex) method
+  //Specification:
+  //Returns a list containing the elements of the original list
+  //from the fromIndex (inclusive) to the toIndex (exclusive).
+  // The returned is backed by the original list, so non-structural changes
+  // will be apparent in this returned list.
+  // If fromIndex equals toIndex, the returned list will be empty. If
+  // either of the indices are invalid, a IndexOutOfBoundsException will be throwm
+
+
+  // Test 1: create a list and check if sub list of valid indexes
+  // return appropriate lists
+  @Test
+  public void testSubList1(){
+    Integer[] ar = {1, 2, 3, 4, 5};
+    List<Integer> l = makeList(ar);
+    assertEquals(l.subList(0,1), makeList(new Integer[] {1}));
+    assertEquals(l.subList(0,2), makeList(new Integer[] {1, 2}));
+    assertEquals(l.subList(0,3), makeList(new Integer[] {1, 2, 3}));
+    assertEquals(l.subList(0,4), makeList(new Integer[] {1, 2, 3, 4}));
+    assertEquals(l.subList(0,5), makeList(new Integer[] {1, 2, 3, 4, 5}));
+  }
+
+  // Test 2: create a list and check if subList returns an empty list if
+  // indices are the same
+  @Test
+  public void testSubList2(){
+    Integer[] ar = {1, 2, 3, 4, 5};
+    List<Integer> l = makeList(ar);
+    assertEquals(l.subList(0,0), makeList(new Integer[] {}));
+    assertEquals(l.subList(1,1), makeList(new Integer[] {}));
+    assertEquals(l.subList(2,2), makeList(new Integer[] {}));
+    assertEquals(l.subList(3,3), makeList(new Integer[] {}));
+    assertEquals(l.subList(4,4), makeList(new Integer[] {}));
+  }
+
+  // Test 3: create a list and check if it throws the proper exception
+  // if the indices are invalid
+  @Test
+  public void testSubList3(){
+    Integer[] ar = {1, 2, 3, 4, 5};
+    List<Integer> l = makeList(ar);
+    assertThrows(IndexOutOfBoundsException.class, () -> {l.subList(-1, 1);});
+    assertThrows(IndexOutOfBoundsException.class, () -> {l.subList(1, 7);});
+    // this test is failing... but according to the spec if shouldn't???
+    assertThrows(IndexOutOfBoundsException.class, () -> {l.subList(4, 1);});
+  }
+
+  // Test 4: create a list, get a sub list, and then make sure non-structural
+  // changes reflect each other in resulting lists.
+  @Test
+  public void testSubList4(){
+    Integer[] ar = {1, 2, 3, 4, 5};
+    List<Integer> l = makeList(ar);
+    List<Integer> subL = l.subList(0, 3);
+    // tests coming soon
+  }
+
 
 }
