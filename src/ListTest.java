@@ -14,7 +14,7 @@ public class ListTest {
   }
   
   // the List Model:
-  // The Java List contains a collection of elements ordered
+  // The Java List contains a collection of references to elements ordered
   // by index, beginning at zero. The elements of a list
   // must be of the type determined when the list is created.
 
@@ -329,7 +329,8 @@ public class ListTest {
     Integer[] ar = {1, 2, 3, 4, 5};
     List<Integer> l = makeList(ar);
     List<Integer> subL = l.subList(0, 3);
-    // tests coming soon
+    subL.set(0, 6);
+    assertEquals(l.get(0), 6);
   }
 
 
