@@ -25,7 +25,7 @@ public class ListTest {
 
   // Tests:
 
-  //Tests basic length functionality with strings
+  // Test 1: Tests basic length functionality with strings
   @Test
   public void testLength1() {
     Integer[] ar = {3,4,5};
@@ -33,7 +33,7 @@ public class ListTest {
     assertEquals(3, l.size());
   }
 
-  //Tests empty list case
+  // Test 2: Tests empty list case
   @Test
   public void testLength2() {
     Integer[] ar = {};
@@ -41,7 +41,7 @@ public class ListTest {
     assertEquals(0, l.size());
   }
 
-  // Tests basic functionality with chars
+  // Test 3: Tests basic functionality with chars
   @Test
   public void testLength3() {
     Character[] ar = {'a'};
@@ -49,7 +49,7 @@ public class ListTest {
     assertEquals(1, l.size());
   }
 
-  // Tests basic functionality with strings
+  // Test 4: Tests basic functionality with strings
   @Test
   public void testLength4() {
     String[] ar = {"t", "t1", "", ""};
@@ -66,7 +66,7 @@ public class ListTest {
 
   //Tests:
 
-  //Tests get basic functionality with integers
+  // Test 1: Tests get basic functionality with integers
   @Test
   public void testGet1() {
     Integer[] ar = {12, 13};
@@ -75,7 +75,7 @@ public class ListTest {
     assertEquals(13, l.get(1));
   }
 
-  //Tests basic get functionality with strings
+  // Test 2: Tests basic get functionality with strings
   @Test
   public void testGet2() {
     String[] ar = {"a", "b", "c", "d"};
@@ -86,7 +86,7 @@ public class ListTest {
     assertEquals("d", l.get(3));
   }
 
-  //Tests get basic functionality with doubles
+  // Test 3: Tests get basic functionality with doubles
   @Test
   public void testGet3() {
     Double[] ar = {1.1, 2.2, 3.3, 4.4};
@@ -97,7 +97,7 @@ public class ListTest {
     assertEquals(4.4, l.get(3));
   }
 
-  //Tests IndexOutOfBounds errors
+  // Test 4: Tests IndexOutOfBounds errors
   @Test
   public void testGet4() {
     String[] ar = {"a", "b", "c", "d"};
@@ -107,7 +107,7 @@ public class ListTest {
     assertThrows(IndexOutOfBoundsException.class, () -> {l.get(100);});
   }
 
-  //Tests emtpy list case
+  // Test 5: Tests empty list case
   @Test
   public void testGet5() {
     String[] ar = {};
@@ -131,7 +131,7 @@ public class ListTest {
 
   //Tests:
 
-  //Tests basic add functionality
+  // Test 1: Tests basic add functionality
   @Test
   public void testAdd1() {
     Integer[] ar = {};
@@ -151,7 +151,7 @@ public class ListTest {
     assertEquals(4, l.get(4));
   }
 
-  //Tests Index out of bounds errors for incorrect indexes
+  // Test 2: Tests Index out of bounds errors for incorrect indexes
   @Test
   public void testAdd2() {
     String[] ar = {"a", "b", "c", "d"};
@@ -160,7 +160,7 @@ public class ListTest {
     assertThrows(IndexOutOfBoundsException.class, () -> {l.add(5, "t");});
   }
 
-  //Tests add with null
+  // Test 3: Tests add with null
   @Test
   public void testAdd3() {
     String[] ar = {"a", "b", "c", "d"};
@@ -169,7 +169,7 @@ public class ListTest {
     assertEquals(null, l.get(2));
   }
 
-  //Tests add with empty list
+  // Test 4: Tests add with empty list
   @Test
   public void testAdd4() {
     Integer[] ar = {};
@@ -189,7 +189,7 @@ public class ListTest {
 
   //Tests:
 
-  //Tests remove basic functionality with integers
+  // Test 1: Tests remove basic functionality with integers
   @Test
   public void testRemove1() {
     Integer[] ar = {0, 1, 2, 3, 4, 5};
@@ -204,7 +204,7 @@ public class ListTest {
     assertEquals(4, l.size());
   }
 
-  //Tests remove basic functionality with strings
+  // Test 2: Tests remove basic functionality with strings
   @Test
   public void testRemove2() {
     String[] ar = {"t0", "t1", "t2", "t3", "t4", "t5"};
@@ -219,7 +219,7 @@ public class ListTest {
     assertEquals(4, l.size());
   }
 
-  // Tests index out of bounds error
+  // Test 3: Tests index out of bounds error
   @Test
   public void testRemove3() {
     String[] ar = {"a", "b", "c", "d"};
@@ -228,7 +228,7 @@ public class ListTest {
     assertThrows(IndexOutOfBoundsException.class, () -> {l.remove(4);});
   }
 
-  // Tests remove on empty list
+  // Test 4: Tests remove on empty list
   @Test
   public void testRemove4() {
     String[] ar = {};
@@ -244,7 +244,7 @@ public class ListTest {
 
   //Test:
 
-  //Tests basic functionality of contains
+  // Test 1: Tests basic functionality of contains
   @Test
   public void testContains1() {
     Integer[] ar = {1, 2, 3, 4, 5};
@@ -261,7 +261,7 @@ public class ListTest {
     assertFalse(l.contains(""));
   }
 
-  //Tests contains works after removing duplicates
+  // Test 2: Tests contains works after removing duplicates
   @Test
   public void testContains2() {
     Integer[] ar = {1,1,2,3};
@@ -273,7 +273,7 @@ public class ListTest {
     assertFalse(l.contains(1));
   }
 
-  //Tests functionality works with strings
+  // Test 3: Tests functionality works with strings
   @Test
   public void testContains3() {
     String[] ar = {"hello", "", "test"};
@@ -285,7 +285,7 @@ public class ListTest {
     assertFalse(l.contains("Hello"));
   }
 
-  //Tests functionality with null
+  // Test 4: Tests functionality with null
   @Test
   public void testContains4() {
     String[] ar = {"", "t1", "t2", null, "t3"};
@@ -295,7 +295,7 @@ public class ListTest {
     assertFalse(l.contains(null));
   }
 
-  // Test contains on empty list
+  // Test 5: Test contains on empty list
   @Test
   public void testContains5() {
     String[] ar = {};
@@ -311,7 +311,7 @@ public class ListTest {
   // Returns the index of the first occurrence of the element in the list
   // if the element is not in the list, -1 is returned.
 
-  // test 1: make list, make sure it gets every index right
+  // Test 1: make list, make sure it gets every index right
   @Test
   public void testIndexOf1(){
     Integer[] ar = {1, 2, 3, 4, 5};
@@ -323,7 +323,7 @@ public class ListTest {
     assertEquals(4, l.indexOf(5));
   }
 
-  //test 2: make list, make sure it correctly returns -1 if elements dont exist
+  // Test 2: make list, make sure it correctly returns -1 if elements dont exist
   @Test
   public void testIndexOf2(){
     Integer[] ar = {1, 2, 3, 4, 5};
@@ -332,7 +332,7 @@ public class ListTest {
     assertEquals(-1, l.indexOf("nope"));
   }
 
-  //Test 3: Make List of strings and see if it works
+  // Test 3: Make List of strings and see if it works
   @Test
   public void testIndexOf3(){
     String[] ar = {"hello", "world", "foo", "bar"};
@@ -341,7 +341,7 @@ public class ListTest {
     assertEquals(1, l.indexOf("world"));
   }
 
-  //Test 4: Make sure the it returns the first index
+  // Test 4: Make sure the it returns the first index
   @Test
   public void testIndexIf4() {
     Integer[] ar = {1, 2, 3, 2, 5, 5};
@@ -350,7 +350,7 @@ public class ListTest {
     assertEquals(4, l.indexOf(5));
   }
 
-  //Test 5: Test indexOf returns -1 for anything with emtpy list
+  // Test 5: Test indexOf returns -1 for anything with emtpy list
   @Test
   public void testIndexIf5() {
     Integer[] ar = {};
@@ -362,9 +362,9 @@ public class ListTest {
   }
 
   // The subList(int fromIndex, int toIndex) method
-  //Specification:
-  //Returns a list containing the elements of the original list
-  //from the fromIndex (inclusive) to the toIndex (exclusive).
+  // Specification:
+  // Returns a list containing the elements of the original list
+  // from the fromIndex (inclusive) to the toIndex (exclusive).
   // The returned is backed by the original list, so non-structural changes
   // will be apparent in this returned list.
   // If fromIndex equals toIndex, the returned list will be empty. If
